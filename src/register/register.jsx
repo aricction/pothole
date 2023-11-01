@@ -52,7 +52,7 @@ export default function Register() {
          
           <div className='my-20 flex flex-col justify-center'>
               <form className='max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8'>
-                  <h2 className='text-4xl dark:text-white font-bold text-center'>SIGN IN</h2>
+                  <h2 className='text-4xl dark:text-white font-bold text-center'>REGISTER YOURSELF</h2>
                   <div className='flex flex-col text-gray-400 py-2'>
                       <label>User Email</label>
                       <input
