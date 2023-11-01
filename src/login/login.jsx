@@ -31,9 +31,28 @@ export default function Signin() {
     return String(email).toLowerCase().match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
   }
 
-  const handleLogins=(e)=>{
-    e.preventDefault();
-   if(!email)
+//   const handleLogins=(e)=>{
+//     e.preventDefault();
+//    if(!email)
+//    { setErrEmail("Enter your email");}
+//    else if(!emailValidation(email))
+//    { setErrEmail("Enter a valid email");}
+//    if(!password)
+//    { setErrPassword("Enter your password");}
+//    else if(password.length < 6)
+//    { setErrPassword("Passwords must be at least 6 characters");}
+//    if(email && emailValidation(email) && password && password.length>=6)
+//    {
+//       console.log(email,password);
+//       setEmail("");
+//       setPassword("");
+//    }
+//  }
+
+ const handleLogin = (e) => {
+  e.preventDefault();
+  // showLoader();
+  if(!email)
    { setErrEmail("Enter your email");}
    else if(!emailValidation(email))
    { setErrEmail("Enter a valid email");}
@@ -43,15 +62,6 @@ export default function Signin() {
    { setErrPassword("Passwords must be at least 6 characters");}
    if(email && emailValidation(email) && password && password.length>=6)
    {
-      console.log(email,password);
-      setEmail("");
-      setPassword("");
-   }
- }
-
- const handleLogin = (e) => {
-  e.preventDefault();
-  // showLoader();
   auth.signInWithEmailAndPassword(email, password).then(() => {
     setSuccessMsg('Login Successful.');
     setEmail('');
@@ -64,6 +74,7 @@ export default function Signin() {
     }, 1000)
   })
   // .catch(error => setErrorMsg(error.message)).then(() => { hideLoader() });
+}
 }
 
     return (

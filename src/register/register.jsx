@@ -48,9 +48,48 @@ export default function Register() {
   const emailValidation = (email) => {
     return String(email).toLowerCase().match(/^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/);
   };
-  const handleRegistration = (e) => {
+//   const handleRegistration = (e) => {
+//     e.preventDefault();
+//     // Validation logic for all fields
+//     if (!name) {
+//         setErrName("Please enter your name.");
+//         return;
+//       }
+
+//       if(!email)
+//       { setErrEmail("Enter your email");}
+//       else if(!emailValidation(email))
+//       { setErrEmail("Enter a valid email");}
+     
+
+//       if (!phoneNumber) {
+//         setErrPhoneNumber("Please enter your phone number.");
+//         return;
+//       } else if (!phoneNumber.match(/^\d{10}$/)) {
+//         setErrPhoneNumber("Please enter a valid 10-digit phone number.");
+//         return;
+//       }
+
+//       if (!password) {
+//         setErrPassword("Please enter your password.");
+//         return;
+//       } else if (password.length < 6) {
+//         setErrPassword("Password must be at least 6 characters long.");
+//         return;
+//       }
+
+//       if (!confirmPassword) {
+//         setErrConfirmPassword("Please confirm your password.");
+//         return;
+//       } else if (confirmPassword !== password) {
+//         setErrConfirmPassword("Passwords do not match.");
+//         return;
+//       }
+
+//   };
+
+  const handelRegister = (e) => {
     e.preventDefault();
-    // Validation logic for all fields
     if (!name) {
         setErrName("Please enter your name.");
         return;
@@ -85,12 +124,6 @@ export default function Register() {
         setErrConfirmPassword("Passwords do not match.");
         return;
       }
-
-  };
-
-  const handelRegister = (e) => {
-    e.preventDefault();
-    // showLoader();
     const uref = auth.createUserWithEmailAndPassword(email, password)
     uref.then((credentials) => {
         fs.collection('users').doc(credentials.user.uid).set({
@@ -171,7 +204,7 @@ export default function Register() {
             onChange={handlePhoneNumber}
             value={phoneNumber}
             className='rounded-lg bg-gray-700 mt-2 p-2 w-full focus:border-blue-500 focus:bg-gray-800 focus:outline-none'
-            type='tel'
+            type='number'
           />
           {errPhoneNumber && <p className='text-red-600 text-xs mt-1'>{errPhoneNumber}</p>}
         </div>
