@@ -69,7 +69,7 @@ export default function Signin() {
     setErrorMsg('');
     setTimeout(() => {
       setSuccessMsg('');
-      navigate('/');
+      navigate('/dash');
       // hideLoader();
     }, 1000)
   })
