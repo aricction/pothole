@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import { auth, fs, storage } from '../config.js'
+import { useNavigate } from 'react-router-dom';
 
 export default function Register() {
+    const navigate = useNavigate();
+
+    var date = new Date();
   const [name, setName] = useState();
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState();
@@ -12,6 +17,8 @@ export default function Register() {
   const [errPhoneNumber, setErrPhoneNumber] = useState();
   const [errPassword, setErrPassword] = useState();
   const [errConfirmPassword, setErrConfirmPassword] = useState();
+  const [errorMsg, setErrorMsg] = useState('');
+  const [successMsg, setSuccessMsg] = useState('');
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -81,7 +88,37 @@ export default function Register() {
 
   };
 
- 
+  const handelRegister = (e) => {
+    e.preventDefault();
+    // showLoader();
+    const uref = auth.createUserWithEmailAndPassword(email, password)
+    uref.then((credentials) => {
+        fs.collection('users').doc(credentials.user.uid).set({
+            Name: name,
+            Email: email,
+            Phone: phoneNumber,
+            Password: password,
+            Created: date
+        }).then(() => {
+            setSuccessMsg('Registration Successfull.');
+            setName('');
+            setErrorMsg('');
+            setEmail('');
+            setPassword('');
+            setTimeout(() => {
+                setSuccessMsg('');
+                // hideLoader();
+                // router.push('/');
+                navigate('/');
+            }, 1000)
+        })
+    })
+    .catch(err => 
+        setErrorMsg(err.message))
+        // .then(() => hideLoader()
+        // );
+
+}
 
   return (
     <main>
@@ -106,7 +143,7 @@ export default function Register() {
         
 
 
-      <form className='max-w-md w-full p-8 bg-gray-900 rounded-lg shadow-lg'>
+      <form className='max-w-md w-full p-8 bg-gray-900 rounded-lg shadow-lg' onSubmit={handelRegister}>
         <h2 className='text-4xl text-white font-bold text-center mb-8'>REGISTER YOURSELF</h2>
         <div className='mb-4'>
           <label className='text-gray-400'>Name</label>
@@ -158,7 +195,7 @@ export default function Register() {
           />
           {errConfirmPassword && <p className='text-red-600 text-xs mt-1'>{errConfirmPassword}</p>}
         </div>
-        <button onClick={handleRegistration}
+        <button  type="submit" 
           className='w-full py-2 bg-teal-500 hover:bg-teal-600 text-white font-semibold rounded-lg focus:outline-none'>
           REGISTER
         </button>
@@ -166,7 +203,14 @@ export default function Register() {
             Already have an account? <Link to="/login"><a className="link link-info"> login here </a> </Link>
         </div>
       </form>
-   
+      {successMsg && <><div className="alert alert-success">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span>{successMsg}</span>
+                            </div></>}
+                            {errorMsg && <><div className="alert alert-error">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                <span>{errorMsg}</span>
+                            </div></>}
                            
     </div>
     </main>
