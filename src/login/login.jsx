@@ -48,10 +48,26 @@ export default function Signin() {
 
 
     return (
-      <div className='h-screen w-full'>
+      <main>
+
+    
+      <nav class="flex  py-6 ps-8" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+        <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+          <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
+        </svg>
+        Home
+      </a>
+    </li>
+  
+  </ol>
+</nav>
+      <div className='h-screen flex items-center justify-center'>
          
           <div className='my-20 flex flex-col justify-center'>
-              <form className='max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8'>
+          <form className='max-w-md w-full p-8 bg-gray-900 rounded-lg shadow-lg'>
                   <h2 className='text-4xl dark:text-white font-bold text-center'>SIGN IN</h2>
                   <div className='flex flex-col text-gray-400 py-2'>
                       <label>User Email</label>
@@ -86,6 +102,7 @@ export default function Signin() {
               </form>
           </div>
       </div>
+      </main>
     )
   
   
