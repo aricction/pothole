@@ -1,16 +1,11 @@
-import logo from './logo.svg';
-import {BrowserRouter} from 'react-router-dom';
-import Register from './register/register';
-import './App.css';
 
-
+import Register from './register/register'
 function App() {
   return (
-<div className='App'>
-  <Register/>
-
-</div>
-   
+    <div>
+    
+      <Register />
+    </div>
   );
 }
 
