@@ -14,14 +14,14 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 		path: '/dash',
 		icon: <HiOutlineViewGrid />
 	},
-	/*
+	
 	{
-		key: 'products',
-		label: 'Product',
-		path: '/',
+		key: 'process',
+		label: 'Detection Process',
+		path: '/process',
 		icon: <HiOutlineCube />
 	},
-	{
+	/*{
 		key: 'customers',
 		label: 'Customers',
 		path: '/',

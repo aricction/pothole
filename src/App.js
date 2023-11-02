@@ -6,7 +6,7 @@ import Register from './register/register';
 import Login from './login/login';
 import Layout from "./components/shared/Layout";
 import Dashboard from "./components/Dashboard";
-
+import Process from "./components/Process";
 
 function App() {
   return (
@@ -18,6 +18,11 @@ function App() {
       
         <Route path="/dash" element={<Layout />} >
           <Route index element={<Dashboard />} />
+        </Route>
+
+
+          <Route path="/process" element={<Layout />} >
+          <Route index element={<Process />} />
           
         </Route>
           
