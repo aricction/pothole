@@ -17,7 +17,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 	
 	{
 		key: 'process',
-		label: 'Detection Process',
+		label: 'Live Detection',
 		path: '/process',
 		icon: <HiOutlineCube />
 	},

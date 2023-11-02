@@ -1,13 +1,10 @@
 import React from 'react'
-import video from '../components/image/video.mkv'
+import video1 from '../components/image/video1.mp4'
 const Process = () => {
   return (
     <div>
-         <video className="h-full w-full rounded-lg" controls autoPlay>
-      <source src={video} type="video/mkv" />
-      Your browser does not support the video tag.
-    </video>
-
+        <video muted src={video1} className='w-full justify-center' autoplay="true" />
+   
     </div>
   )
 }
