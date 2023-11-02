@@ -16,10 +16,12 @@ function App() {
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       
+        <Route path="/" element={<Layout />} >
+          <Route index element={<Dashboard />} />
+        </Route>
         <Route path="/dash" element={<Layout />} >
           <Route index element={<Dashboard />} />
         </Route>
-
 
           <Route path="/process" element={<Layout />} >
           <Route index element={<Process />} />
